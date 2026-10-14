@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quel est votre style de personnalité ?</title>
+<meta name="description" content="Découvrez votre profil de personnalité dominant en 28 questions. Résultat visuel instantané avec explication complète.">
+<link rel="canonical" href="https://matrixinside33.github.io/test-personnalite/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Quel est votre style de personnalité ? Faites le test !">
+<meta property="og:description" content="28 questions pour révéler votre profil comportemental dominant. Résultat visuel instantané.">
+<meta property="og:url" content="https://matrixinside33.github.io/test-personnalite/">
+<meta property="og:image" content="https://matrixinside33.github.io/test-personnalite/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quel est votre style de personnalité ?">
+<meta name="twitter:image" content="https://matrixinside33.github.io/test-personnalite/preview.png">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --D: #FF5E5B;
+  --I: #FFBC42;
+  --S: #38B88E;
+  --C: #4D9DE0;
+  --D-light: #fff0f0;
+  --I-light: #fffbee;
+  --S-light: #edfff7;
+  --C-light: #eef6ff;
+  --bg: #F4F2FF;
+  --surface: #FFFFFF;
+  --border: #E8E4FF;
+  --text: #1a1630;
+  --muted: #8880AA;
+  --accent: #7C5CBF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════
+   ÉCRAN INTRO
+══════════════════════════════ */
+#screen-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 3rem 1.5rem 4rem;
+  background: linear-gradient(160deg, #f0edff 0%, #fce9ff 50%, #e9f5ff 100%);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Bulles déco fond */
+#screen-intro::before,
+#screen-intro::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+#screen-intro::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(124,92,191,0.08) 0%, transparent 70%);
+  top: -120px; right: -100px;
+}
+#screen-intro::after {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(56,184,142,0.1) 0%, transparent 70%);
+  bottom: -80px; left: -60px;
+}
+
+.intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 30px;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 12px rgba(124,92,191,0.1);
+  z-index: 1;
+}
+
+.intro-badge::before { content: '✦'; }
+
+#screen-intro h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  color: var(--text);
+  z-index: 1;
+  position: relative;
+}
+
+#screen-intro h1 span {
+  background: linear-gradient(135deg, var(--accent), #e055d0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.intro-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 3rem;
+  z-index: 1;
+  font-weight: 600;
+}
+
+/* ── Grille des 4 profils ── */
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  max-width: 560px;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  z-index: 1;
+}
+
+.profile-card-intro {
+  background: white;
+  border-radius: 16px;
+  padding: 1.2rem 1rem;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.profile-card-intro::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 16px 16px 0 0;
+}
+
+.profile-card-intro:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.profile-card-intro .pcl {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.profile-card-intro h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.profile-card-intro p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.pc-D::before { background: var(--D); }
+.pc-D h3 { color: var(--D); }
+.pc-I::before { background: var(--I); }
+.pc-I h3 { color: #d09000; }
+.pc-S::before { background: var(--S); }
+.pc-S h3 { color: #1f8a66; }
+.pc-C::before { background: var(--C); }
+.pc-C h3 { color: #2d6fa8; }
+
+.method-pill {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.4rem;
+  max-width: 520px;
+  text-align: left;
+  margin-bottom: 2.5rem;
+  z-index: 1;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.method-pill .ml {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.method-pill p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.btn-start {
+  background: linear-gradient(135deg, var(--accent) 0%, #c04fd4 100%);
+  color: white;
+  border: none;
+  padding: 1.1rem 3.2rem;
+  border-radius: 50px;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 24px rgba(124,92,191,0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+  z-index: 1;
+  position: relative;
+}
+
+.btn-start:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(124,92,191,0.45);
+}
+
+/* ══════════════════════════════
+   ÉCRAN QUESTION
+══════════════════════════════ */
+#screen-question {
+  display: none;
+  min-height: 100vh;
+  padding: 0;
+  background: linear-gradient(160deg, #f0edff 0%, #fce9ff 50%, #e9f5ff 100%);
+}
+
+/* Bandeau de progression FIXE en haut */
+.q-progress-bar-top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.q-progress-bar-top .logo-small {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.prog-track {
+  flex: 1;
+  height: 8px;
+  background: var(--bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #c04fd4);
+  border-radius: 10px;
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+}
+
+.q-counter-top {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+  background: var(--bg);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+}
+
+/* Corps question */
+.q-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem 1.2rem 4rem;
+}
+
+.q-cat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: white;
+  border: 1.5px solid var(--border);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 1.4rem;
+}
+
+.q-text {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.2rem, 3.2vw, 1.65rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 0.7rem;
+}
+
+.q-instruction {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* Choix — 2 colonnes */
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.choice-btn {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 1.15rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.choice-btn .choice-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--bg);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0;
+}
+
+.choice-btn:hover {
+  border-color: var(--accent);
+  background: #f8f5ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(124,92,191,0.12);
+}
+
+/* Classes de sélection par type — appliquées uniquement via JS classList */
+.choice-btn.sel-D { border-color: #FF5E5B !important; background: #FF5E5B18 !important; transform: translateY(-2px); box-shadow: 0 6px 20px #FF5E5B30 !important; }
+.choice-btn.sel-I { border-color: #FFBC42 !important; background: #FFBC4218 !important; transform: translateY(-2px); box-shadow: 0 6px 20px #FFBC4230 !important; }
+.choice-btn.sel-S { border-color: #38B88E !important; background: #38B88E18 !important; transform: translateY(-2px); box-shadow: 0 6px 20px #38B88E30 !important; }
+.choice-btn.sel-C { border-color: #4D9DE0 !important; background: #4D9DE018 !important; transform: translateY(-2px); box-shadow: 0 6px 20px #4D9DE030 !important; }
+
+/* Navigation */
+.q-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-prev {
+  background: white;
+  border: 2px solid var(--border);
+  color: var(--muted);
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all 0.15s;
+}
+
+.btn-prev:hover { border-color: var(--muted); color: var(--text); }
+
+.btn-next {
+  background: linear-gradient(135deg, var(--accent), #c04fd4);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(124,92,191,0.3);
+  transition: all 0.15s;
+}
+
+.btn-next:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,92,191,0.4); }
+.btn-next:disabled { opacity: 0.35; pointer-events: none; box-shadow: none; }
+
+/* ══════════════════════════════
+   ÉCRAN RÉSULTAT
+══════════════════════════════ */
+#screen-result {
+  display: none;
+  min-height: 100vh;
+  padding: 3rem 1.2rem 5rem;
+}
+
+#screen-result.res-D { background: linear-gradient(160deg, #fff5f5 0%, #fff0e8 100%); }
+#screen-result.res-I { background: linear-gradient(160deg, #fffbee 0%, #fff8e0 100%); }
+#screen-result.res-S { background: linear-gradient(160deg, #edfff8 0%, #e6fff2 100%); }
+#screen-result.res-C { background: linear-gradient(160deg, #eef6ff 0%, #e6f0ff 100%); }
+
+.res-wrap { max-width: 860px; margin: 0 auto; }
+
+/* Hero */
+.res-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.res-big-emoji {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+  animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.res-hero h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.res-hero .res-tag {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  padding: 0.35rem 1.2rem;
+  border-radius: 30px;
+  display: inline-block;
+  margin-top: 0.4rem;
+}
+
+/* Roue + légende côte-à-côte */
+.wheel-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.wheel-container svg { width: 100%; max-width: 300px; display: block; margin: 0 auto; }
+
+.legend-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.legend-item {
+  background: white;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 2px solid transparent;
+  transition: transform 0.15s;
+}
+
+.legend-item.is-dominant {
+  border-color: currentColor;
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.legend-dot {
+  width: 14px; height: 14px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  flex: 1;
+}
+
+.legend-pct {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+/* Barres */
+.bars-section {
+  background: white;
+  border-radius: 18px;
+  padding: 1.6rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.bars-section h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: var(--text);
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.85rem;
+}
+
+.bar-row:last-child { margin-bottom: 0; }
+
+.bar-row-label {
+  width: 110px;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.bar-row-track {
+  flex: 1;
+  height: 10px;
+  background: var(--bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar-row-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+.bar-row-pct {
+  width: 36px;
+  text-align: right;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Description */
+.desc-card {
+  background: white;
+  border-radius: 18px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.desc-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1.1rem;
+}
+
+.desc-card p {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 0.9rem;
+}
+
+.desc-card p:last-child { margin-bottom: 0; }
+
+/* Traits */
+.traits-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.trait {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* Forces / axes */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-list {
+  background: white;
+  border-radius: 16px;
+  padding: 1.4rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.card-list h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-bottom: 0.9rem;
+}
+
+.card-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-list ul li {
+  font-size: 0.83rem;
+  color: #444;
+  font-weight: 600;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card-list ul li::before {
+  content: '→';
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.disclaimer {
+  background: white;
+  border: 1.5px dashed var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.3rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.btn-restart {
+  display: block;
+  margin: 2rem auto 0;
+  background: white;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.85rem 2.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.15s;
+}
+
+.btn-restart:hover { background: var(--accent); color: white; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 560px) {
+  .choices-grid { grid-template-columns: 1fr; }
+  .wheel-section { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .profiles-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ INTRO ══════════════ -->
+<div id="screen-intro">
+  <span class="intro-badge">Diagnostic comportemental · 28 questions</span>
+
+  <h1>Quel est<br>votre <span>style de<br>personnalité</span> ?</h1>
+  <p class="intro-sub">Découvrez en 3 minutes votre profil dominant parmi quatre grands styles comportementaux universels.</p>
+
+  <div class="profiles-grid">
+    <div class="profile-card-intro pc-D">
+      <span class="pcl">🔴</span>
+      <h3>Le Pionnier</h3>
+      <p>Action · Résultats · Leadership</p>
+    </div>
+    <div class="profile-card-intro pc-I">
+      <span class="pcl">🟡</span>
+      <h3>L'Influenceur</h3>
+      <p>Charisme · Enthousiasme · Liens</p>
+    </div>
+    <div class="profile-card-intro pc-S">
+      <span class="pcl">🟢</span>
+      <h3>Le Stabilisateur</h3>
+      <p>Loyauté · Harmonie · Fiabilité</p>
+    </div>
+    <div class="profile-card-intro pc-C">
+      <span class="pcl">🔵</span>
+      <h3>L'Analyste</h3>
+      <p>Rigueur · Qualité · Méthode</p>
+    </div>
+  </div>
+
+  <div class="method-pill">
+    <div class="ml">✦ Fondements scientifiques</div>
+    <p>Ce test s'appuie sur le modèle des styles comportementaux de William Moulton Marston (<em>Emotions of Normal People</em>, 1928), développé par Walter Clarke (1940) et validé dans des travaux de psychologie différentielle (Merenda, 1996 ; Sugerman et al., 2011). Il mesure deux axes : <strong>extraversion / introversion</strong> et <strong>orientation tâche / orientation personnes</strong>.</p>
+  </div>
+
+  <button class="btn-start" onclick="startTest()">Démarrer le diagnostic ✦</button>
+</div>
+
+<!-- ══════════════ QUESTION ══════════════ -->
+<div id="screen-question">
+
+  <!-- Barre de progression sticky -->
+  <div class="q-progress-bar-top">
+    <span class="logo-small">✦ Profil Perso</span>
+    <div class="prog-track">
+      <div class="prog-fill" id="prog-fill" style="width:0%"></div>
+    </div>
+    <span class="q-counter-top" id="q-counter-top">1 / 28</span>
+  </div>
+
+  <div class="q-body">
+    <span class="q-cat-label" id="q-cat-label">Catégorie</span>
+    <p class="q-text" id="q-text">Question</p>
+    <p class="q-instruction">Choisissez la réponse qui vous ressemble le plus spontanément</p>
+
+    <div class="choices-grid" id="choices-grid"></div>
+
+    <div class="q-nav">
+      <button class="btn-prev" id="btn-prev" onclick="prevQ()">← Précédent</button>
+      <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>Suivant →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ RÉSULTAT ══════════════ -->
+<div id="screen-result">
+  <div class="res-wrap">
+
+    <div class="res-hero">
+      <span class="res-big-emoji" id="r-emoji">🎯</span>
+      <h2 id="r-title">—</h2>
+      <span class="res-tag" id="r-tag"></span>
+    </div>
+
+    <div class="wheel-section">
+      <div class="wheel-container">
+        <svg id="wheel-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <ul class="legend-list" id="legend-list"></ul>
+    </div>
+
+    <div class="bars-section">
+      <h3>📊 Répartition de votre profil</h3>
+      <div id="bars-rows"></div>
+    </div>
+
+    <div class="desc-card" id="desc-card">
+      <h3 id="r-heading"></h3>
+      <div id="r-desc"></div>
+      <div class="traits-row" id="r-traits"></div>
+    </div>
+
+    <div class="grid-2" id="grid-2"></div>
+
+    <div class="disclaimer">
+      <strong>📌 Note méthodologique :</strong> Ce test fournit une indication de votre style comportemental préférentiel. Aucun profil n'est supérieur à un autre. Les individus expriment souvent une combinaison de plusieurs styles selon le contexte. Les résultats reflètent vos réponses à 28 situations et ne constituent pas un diagnostic clinique.
+    </div>
+
+    <button class="btn-restart" onclick="restart()">↺ Recommencer le test</button>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   QUESTIONS — 28 items forced-choice
+   D=Pionnier  I=Influenceur  S=Stabilisateur  C=Analyste
+═══════════════════════════════════════════════ */
+const QUESTIONS = [
+  { text:"Face à un nouveau projet, votre premier réflexe est de…", cat:"Prise de décision", opts:[
+    {type:"D", text:"Définir immédiatement les objectifs et passer à l'action."},
+    {type:"I", text:"Partager l'idée avec votre entourage pour susciter l'enthousiasme."},
+    {type:"S", text:"Écouter ce que pensent les autres avant de vous positionner."},
+    {type:"C", text:"Collecter des données et analyser les risques potentiels."}
+  ]},
+  { text:"En équipe, vous êtes souvent celui ou celle qui…", cat:"Travail en équipe", opts:[
+    {type:"D", text:"Prend les décisions difficiles que les autres évitent."},
+    {type:"I", text:"Remonte le moral du groupe et fédère les énergies."},
+    {type:"S", text:"Veille à ce que tout le monde se sente inclus et entendu."},
+    {type:"C", text:"Vérifie que le travail est bien fait et conforme aux attentes."}
+  ]},
+  { text:"Ce qui vous motive le plus au quotidien, c'est…", cat:"Motivation", opts:[
+    {type:"D", text:"Relever des défis et obtenir des résultats concrets."},
+    {type:"I", text:"Créer des liens et vivre des expériences enthousiasmantes."},
+    {type:"S", text:"Contribuer à un environnement stable et harmonieux."},
+    {type:"C", text:"Maîtriser un sujet en profondeur et livrer un travail irréprochable."}
+  ]},
+  { text:"Lors d'un désaccord, vous avez tendance à…", cat:"Gestion du conflit", opts:[
+    {type:"D", text:"Défendre votre position fermement et aller droit au but."},
+    {type:"I", text:"Utiliser l'humour et la persuasion pour détendre l'atmosphère."},
+    {type:"S", text:"Chercher un compromis pour préserver la relation."},
+    {type:"C", text:"Appuyer vos arguments sur des faits et des données précises."}
+  ]},
+  { text:"Vos collègues vous décrivent généralement comme…", cat:"Image perçue", opts:[
+    {type:"D", text:"Direct, déterminé, parfois impatient."},
+    {type:"I", text:"Enthousiaste, sociable, parfois dispersé."},
+    {type:"S", text:"Fiable, patient, parfois trop prudent."},
+    {type:"C", text:"Rigoureux, analytique, parfois perfectionniste."}
+  ]},
+  { text:"Pour prendre une décision importante, vous avez besoin…", cat:"Prise de décision", opts:[
+    {type:"D", text:"D'aller vite, vous faites confiance à votre instinct."},
+    {type:"I", text:"D'en parler à plusieurs personnes pour avoir des avis."},
+    {type:"S", text:"De temps pour réfléchir et vous sentir en sécurité."},
+    {type:"C", text:"D'un maximum d'informations fiables avant de décider."}
+  ]},
+  { text:"En situation de stress, vous avez tendance à…", cat:"Gestion du stress", opts:[
+    {type:"D", text:"Devenir plus directif et contrôlant pour reprendre la main."},
+    {type:"I", text:"Chercher du soutien émotionnel auprès de votre entourage."},
+    {type:"S", text:"Vous replier et attendre que la situation se stabilise."},
+    {type:"C", text:"Analyser chaque détail pour trouver la source du problème."}
+  ]},
+  { text:"Dans une réunion, vous êtes le plus à l'aise quand…", cat:"Communication", opts:[
+    {type:"D", text:"Vous pouvez présenter vos idées et orienter les décisions."},
+    {type:"I", text:"L'ambiance est détendue et les échanges sont spontanés."},
+    {type:"S", text:"Tout le monde s'écoute et le rythme est calme."},
+    {type:"C", text:"L'ordre du jour est précis et les informations sont préparées."}
+  ]},
+  { text:"Ce qui vous énerve le plus chez les autres, c'est…", cat:"Points de friction", opts:[
+    {type:"D", text:"La lenteur, l'indécision et le manque d'initiative."},
+    {type:"I", text:"La froideur, le manque d'enthousiasme et la rigidité."},
+    {type:"S", text:"Les conflits inutiles, l'agressivité et les changements brusques."},
+    {type:"C", text:"L'approximation, le manque de rigueur et les erreurs répétées."}
+  ]},
+  { text:"Votre rapport au changement est…", cat:"Adaptabilité", opts:[
+    {type:"D", text:"Positif : c'est une opportunité d'agir et de progresser."},
+    {type:"I", text:"Enthousiaste : vous aimez la nouveauté et la variété."},
+    {type:"S", text:"Prudent : vous préférez des transitions progressives."},
+    {type:"C", text:"Mesuré : vous analysez d'abord les implications du changement."}
+  ]},
+  { text:"Vous vous sentez valorisé·e quand on reconnaît…", cat:"Reconnaissance", opts:[
+    {type:"D", text:"Vos résultats et votre efficacité."},
+    {type:"I", text:"Votre créativité et votre capacité à motiver les autres."},
+    {type:"S", text:"Votre fiabilité et votre soutien à l'équipe."},
+    {type:"C", text:"La précision et la qualité de votre travail."}
+  ]},
+  { text:"Lors d'une présentation, vous privilégiez…", cat:"Communication", opts:[
+    {type:"D", text:"L'essentiel : des points clés, directs et impactants."},
+    {type:"I", text:"Les anecdotes, le storytelling et la dynamique du groupe."},
+    {type:"S", text:"Un rythme posé, illustré d'exemples concrets."},
+    {type:"C", text:"Des données précises, des graphiques et une logique rigoureuse."}
+  ]},
+  { text:"Votre plus grande force dans votre travail est…", cat:"Forces", opts:[
+    {type:"D", text:"Savoir prendre des décisions rapides, même sous pression."},
+    {type:"I", text:"Inspirer et convaincre les autres avec énergie."},
+    {type:"S", text:"Tenir vos engagements et stabiliser le groupe."},
+    {type:"C", text:"Anticiper les problèmes grâce à une analyse minutieuse."}
+  ]},
+  { text:"Quand quelqu'un vous demande de l'aide, vous…", cat:"Relations", opts:[
+    {type:"D", text:"Proposez une solution concrète et directe, sans fioritures."},
+    {type:"I", text:"L'encouragez et l'aidez à voir les choses positivement."},
+    {type:"S", text:"Prenez le temps d'écouter avant de proposer quoi que ce soit."},
+    {type:"C", text:"Posez des questions précises pour comprendre le problème en détail."}
+  ]},
+  { text:"Votre espace de travail idéal est…", cat:"Environnement", opts:[
+    {type:"D", text:"Efficace et sans distraction : l'essentiel pour avancer vite."},
+    {type:"I", text:"Stimulant, coloré, ouvert et propice aux échanges."},
+    {type:"S", text:"Calme, organisé et stable, avec des routines claires."},
+    {type:"C", text:"Structuré, avec tout le matériel nécessaire à portée de main."}
+  ]},
+  { text:"Vous gérez votre agenda en…", cat:"Organisation", opts:[
+    {type:"D", text:"Priorisant les actions à fort impact et en délégant le reste."},
+    {type:"I", text:"Laissant de la place pour l'improvisation et les échanges."},
+    {type:"S", text:"Respectant les routines et en évitant les trop nombreux imprévus."},
+    {type:"C", text:"Planifiant chaque tâche avec précision et en respectant les délais."}
+  ]},
+  { text:"Vous apprenez mieux quand…", cat:"Apprentissage", opts:[
+    {type:"D", text:"On va droit au but et que vous pouvez expérimenter rapidement."},
+    {type:"I", text:"Il y a de l'interaction, des échanges et une dynamique de groupe."},
+    {type:"S", text:"Le rythme est régulier et vous disposez du temps nécessaire."},
+    {type:"C", text:"Le contenu est structuré, documenté et logiquement ordonné."}
+  ]},
+  { text:"Sur un projet en retard, votre réaction est de…", cat:"Prise de décision", opts:[
+    {type:"D", text:"Reprendre les rênes et accélérer le rythme immédiatement."},
+    {type:"I", text:"Remotiver l'équipe et redonner de l'élan collectif."},
+    {type:"S", text:"Vérifier que tout le monde va bien et réorganiser calmement."},
+    {type:"C", text:"Analyser les causes du retard avant d'agir."}
+  ]},
+  { text:"Dans vos relations, vous valorisez avant tout…", cat:"Relations", opts:[
+    {type:"D", text:"Le respect mutuel, la franchise et l'efficacité."},
+    {type:"I", text:"La complicité, le partage et l'enthousiasme commun."},
+    {type:"S", text:"La loyauté, la confiance et la durée dans le temps."},
+    {type:"C", text:"La cohérence, le sérieux et la profondeur des échanges."}
+  ]},
+  { text:"Quand vous dirigez une équipe, vous êtes naturellement…", cat:"Leadership", opts:[
+    {type:"D", text:"Orienté·e résultats, vous fixez des objectifs clairs et exigeants."},
+    {type:"I", text:"Inspirant·e, vous créez un élan collectif et valorisez chacun."},
+    {type:"S", text:"Soutenant·e, vous veillez au bien-être et à la cohésion."},
+    {type:"C", text:"Structurant·e, vous définissez des processus clairs et rigoureux."}
+  ]},
+  { text:"Face à une règle que vous jugez inefficace, vous…", cat:"Adaptabilité", opts:[
+    {type:"D", text:"La challengez ou l'ignorez si elle freine les résultats."},
+    {type:"I", text:"Proposez de la changer en cherchant l'adhésion du groupe."},
+    {type:"S", text:"La respectez tant qu'elle n'est pas officiellement modifiée."},
+    {type:"C", text:"L'analysez en détail pour proposer une alternative argumentée."}
+  ]},
+  { text:"Votre principale crainte professionnelle est…", cat:"Points de friction", opts:[
+    {type:"D", text:"Perdre le contrôle ou dépendre des décisions des autres."},
+    {type:"I", text:"Être ignoré·e ou ne pas être apprécié·e par votre entourage."},
+    {type:"S", text:"Vivre dans l'instabilité et subir des changements constants."},
+    {type:"C", text:"Commettre des erreurs ou être pris·e en défaut sur la qualité."}
+  ]},
+  { text:"Vos meilleures idées émergent généralement…", cat:"Créativité", opts:[
+    {type:"D", text:"Dans l'action, en expérimentant directement sur le terrain."},
+    {type:"I", text:"En discutant librement avec des gens stimulants."},
+    {type:"S", text:"Dans un environnement calme, après une réflexion posée."},
+    {type:"C", text:"Après une recherche approfondie et une analyse structurée."}
+  ]},
+  { text:"Pour convaincre quelqu'un, vous utilisez surtout…", cat:"Communication", opts:[
+    {type:"D", text:"Des arguments directs centrés sur les bénéfices concrets."},
+    {type:"I", text:"Votre enthousiasme, votre charisme et votre storytelling."},
+    {type:"S", text:"Votre écoute et la construction progressive d'une relation de confiance."},
+    {type:"C", text:"Des données solides, des preuves et une logique irréfutable."}
+  ]},
+  { text:"Quand vous commettez une erreur, vous…", cat:"Gestion du stress", opts:[
+    {type:"D", text:"L'assumez rapidement et passez aussitôt à la correction."},
+    {type:"I", text:"En parlez ouvertement et cherchez du soutien autour de vous."},
+    {type:"S", text:"L'analysez discrètement pour éviter de troubler l'harmonie du groupe."},
+    {type:"C", text:"L'examinez en détail pour comprendre précisément ce qui a mal tourné."}
+  ]},
+  { text:"La phrase qui vous ressemble le plus est…", cat:"Valeurs", opts:[
+    {type:"D", text:"« Agis d'abord, réfléchis ensuite. »"},
+    {type:"I", text:"« Ensemble, on va plus loin et on s'amuse mieux. »"},
+    {type:"S", text:"« La constance et la confiance bâtissent tout. »"},
+    {type:"C", text:"« Mesure deux fois, coupe une fois. »"}
+  ]},
+  { text:"Dans votre vie privée, vous êtes plutôt…", cat:"Vie personnelle", opts:[
+    {type:"D", text:"Actif·ve, vous aimez relever des défis même en dehors du travail."},
+    {type:"I", text:"Social·e, votre agenda est souvent rempli de sorties et de rencontres."},
+    {type:"S", text:"Homebody, vous appréciez les routines douces et les cercles proches."},
+    {type:"C", text:"Sélectif·ve, vous préférez des activités enrichissantes et solitaires."}
+  ]},
+  { text:"Si vous deviez choisir un superpouvoir pro, ce serait…", cat:"Forces", opts:[
+    {type:"D", text:"Obtenir des résultats exceptionnels en un temps record."},
+    {type:"I", text:"Persuader n'importe qui en quelques minutes."},
+    {type:"S", text:"Créer une confiance inébranlable autour de vous."},
+    {type:"C", text:"Voir les erreurs et les risques avant tout le monde."}
+  ]}
+];
+
+/* ═══════════════════════════════════════════════
+   PROFILS
+═══════════════════════════════════════════════ */
+const PROFILES = {
+  D: {
+    name:"Le Pionnier", tag:"Dominant · Orienté résultats",
+    color:"#FF5E5B", lightBg:"res-D", emoji:"🔴",
+    description:[
+      "Votre profil dominant est celui du <strong>Pionnier</strong> — caractérisé par une forte orientation vers l'action, les résultats et la prise de décision rapide. Vous êtes naturellement à l'aise dans des environnements compétitifs et n'hésitez pas à prendre les rênes.",
+      "Ce style correspond au pôle « Dominant » du modèle de Marston (1928). Les individus à dominante D sont motivés par le contrôle, les défis et l'efficacité. Les recherches de Sugerman et al. (2011) soulignent leur capacité de leadership naturel et leur faible tolérance à l'inefficacité.",
+      "Votre axe de développement : cultiver la patience et l'écoute active, afin que votre leadership soit perçu comme inspirant plutôt qu'imposant."
+    ],
+    traits:["Déterminé·e","Direct·e","Décisif·ve","Compétitif·ve","Autonome","Orienté·e résultats"],
+    strengths:["Décisions rapides sous pression","Objectifs ambitieux","Gestion de la pression","Déblocage de situations complexes","Innovation sous contrainte"],
+    axes:["Développer l'écoute active","Valoriser les contributions de l'équipe","Tolérer les processus progressifs","Célébrer les victoires collectives","Accepter l'ambiguïté"]
+  },
+  I: {
+    name:"L'Influenceur", tag:"Inspirant · Orienté relations",
+    color:"#D09000", lightBg:"res-I", emoji:"🟡",
+    description:[
+      "Votre profil dominant est celui de <strong>l'Influenceur</strong> — marqué par un fort besoin de contact humain, d'expression et d'enthousiasme partagé. Vous êtes naturellement doué·e pour fédérer, convaincre et créer une dynamique collective.",
+      "Ce style correspond au pôle « Influence » du modèle de Marston : une réponse active à un environnement favorable, cherchant à rassembler et à motiver. Les travaux de Merenda (1996) confirment que ce profil est associé à une forte intelligence émotionnelle et à des capacités de persuasion au-dessus de la moyenne.",
+      "Votre axe de développement : la structuration — canaliser votre énergie créatrice dans des plans d'action concrets pour transformer votre enthousiasme en résultats durables."
+    ],
+    traits:["Enthousiaste","Charismatique","Persuasif·ve","Créatif·ve","Optimiste","Sociable"],
+    strengths:["Motiver et inspirer une équipe","Communiquer avec impact","Créer des liens rapidement","Vendre des idées et projets","Animer et fédérer"],
+    axes:["Améliorer la gestion du temps","Développer la rigueur méthodologique","Apprendre à dire non","Finir les projets engagés","Écouter plus, parler moins"]
+  },
+  S: {
+    name:"Le Stabilisateur", tag:"Soutien · Orienté harmonie",
+    color:"#1f8a66", lightBg:"res-S", emoji:"🟢",
+    description:[
+      "Votre profil dominant est celui du <strong>Stabilisateur</strong> — caractérisé par la fiabilité, la patience et un profond sens du collectif. Vous êtes la colonne vertébrale silencieuse de vos équipes, celle sur qui l'on peut toujours compter.",
+      "Ce style correspond au pôle « Stabilité » du modèle de Marston : une réponse passive à un environnement favorable, valorisant la coopération, la constance et la loyauté. Les études de Sugerman et al. (2011) montrent que ce profil est le plus apprécié en termes de confiance relationnelle dans les équipes.",
+      "Votre axe de développement : l'affirmation de soi — apprendre à exprimer vos besoins et à prendre des décisions rapides vous permettra de déployer pleinement votre leadership bienveillant."
+    ],
+    traits:["Patient·e","Loyal·e","Fiable","Empathique","Calme","Coopératif·ve"],
+    strengths:["Cohésion d'équipe","Relations avec tact","Climat de confiance","Tenue des engagements","Accompagnement des transitions"],
+    axes:["Oser s'affirmer davantage","Initier le changement","Décider plus rapidement","Gérer les conflits frontalement","Développer ses ambitions personnelles"]
+  },
+  C: {
+    name:"L'Analyste", tag:"Consciencieux · Orienté qualité",
+    color:"#2d6fa8", lightBg:"res-C", emoji:"🔵",
+    description:[
+      "Votre profil dominant est celui de <strong>l'Analyste</strong> — marqué par la rigueur, le souci du détail et une exigence de qualité élevée. Vous êtes celui ou celle qui pose les bonnes questions et anticipe les problèmes avant qu'ils n'arrivent.",
+      "Ce style correspond au pôle « Conformité/Conscienciosité » du modèle de Marston. Les recherches en psychologie différentielle (Costa & McCrae, 1992 ; Merenda, 1996) associent ce profil à un haut niveau de conscienciosité et d'ouverture intellectuelle.",
+      "Votre axe de développement : l'acceptation de l'imperfection — un livrable à 90 % dans les temps vaut souvent mieux qu'un livrable parfait rendu trop tard."
+    ],
+    traits:["Rigoureux·se","Analytique","Précis·e","Méthodique","Perfectionniste","Prudent·e"],
+    strengths:["Anticiper risques et erreurs","Structurer des projets complexes","Haute qualité de livraison","Maîtrise en profondeur","Conformité et fiabilité"],
+    axes:["Accepter un certain niveau d'imperfection","Décider avec moins de données","Communiquer avec spontanéité","Déléguer sans tout vérifier","Gérer le perfectionnisme paralysant"]
+  }
+};
+
+const COLORS_DISPLAY = { D:"#FF5E5B", I:"#FFBC42", S:"#38B88E", C:"#4D9DE0" };
+const NAMES = { D:"Pionnier", I:"Influenceur", S:"Stabilisateur", C:"Analyste" };
+const EMOJIS = { D:"🔴", I:"🟡", S:"🟢", C:"🔵" };
+
+/* ═══════════════════════════════════════════════
+   ÉTAT — shuffle mémorisé par question
+═══════════════════════════════════════════════ */
+let current = 0;
+let answers = new Array(QUESTIONS.length).fill(null);
+
+// Pré-mélange unique par question (ordre stable pendant toute la session)
+const shuffledOrders = QUESTIONS.map(() => {
+  const idxs = [0,1,2,3];
+  for (let i = 3; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [idxs[i],idxs[j]] = [idxs[j],idxs[i]];
+  }
+  return idxs;
+});
+
+function startTest() {
+  document.getElementById('screen-intro').style.display = 'none';
+  document.getElementById('screen-question').style.display = 'block';
+  renderQ();
+}
+
+// ─── Rendu d'une question ────────────────────────────────────────────────────
+// Principe : on écrit du HTML pur dans un conteneur,
+// sans aucune classe "selected" — le navigateur ne peut pas recycler d'état.
+function renderQ() {
+  const q = QUESTIONS[current];
+  const labels = ['A','B','C','D'];
+  const order = shuffledOrders[current];
+
+  // Barre de progression
+  document.getElementById('q-counter-top').textContent = `${current+1} / ${QUESTIONS.length}`;
+  document.getElementById('prog-fill').style.width = `${(current / QUESTIONS.length) * 100}%`;
+
+  // Texte de la question
+  document.getElementById('q-cat-label').textContent = '✦ ' + q.cat;
+  document.getElementById('q-text').textContent = q.text;
+
+  // Boutons de navigation
+  const prev = document.getElementById('btn-prev');
+  prev.style.opacity = current === 0 ? '0.3' : '1';
+  prev.style.pointerEvents = current === 0 ? 'none' : 'auto';
+
+  const next = document.getElementById('btn-next');
+  next.disabled = true;
+  next.textContent = current === QUESTIONS.length-1 ? 'Voir mon profil ✦' : 'Suivant →';
+
+  // ── Grille de choix : innerHTML pur, zéro DOM réutilisé ──────────────────
+  // On génère du HTML en une seule chaîne → le navigateur recrée tout
+  // depuis zéro, sans aucun état résiduel possible.
+  let html = '';
+  order.forEach((optIdx, displayIdx) => {
+    const opt = q.opts[optIdx];
+    // data-type sert uniquement à l'identification, AUCUNE classe "sel-*" ici
+    html += `<button class="choice-btn" data-type="${opt.type}" onclick="pick('${opt.type}',this)">
+      <span class="choice-letter">${labels[displayIdx]}</span>${opt.text}
+    </button>`;
+  });
+  document.getElementById('choices-grid').innerHTML = html;
+  // Pas de setTimeout, pas d'auto-advance, pas de classe à nettoyer.
+}
+
+// ─── Sélection d'une réponse ─────────────────────────────────────────────────
+function pick(type, clickedEl) {
+  // 1. Retirer la classe de sélection de TOUS les boutons de la grille
+  document.querySelectorAll('#choices-grid .choice-btn').forEach(b => {
+    b.classList.remove('sel-D','sel-I','sel-S','sel-C');
+  });
+  // 2. Appliquer la classe sur le bouton cliqué uniquement
+  clickedEl.classList.add('sel-' + type);
+
+  // 3. Mémoriser la réponse
+  answers[current] = type;
+
+  // 4. Activer le bouton "Suivant" — l'utilisateur avance lui-même
+  const next = document.getElementById('btn-next');
+  next.disabled = false;
+}
+
+function nextQ() {
+  if (answers[current] === null) return;
+  if (current < QUESTIONS.length-1) { current++; renderQ(); }
+  else showResult();
+}
+
+function prevQ() {
+  if (current > 0) { current--; renderQ(); }
+}
+
+/* ═══════════════════════════════════════════════
+   CALCUL
+═══════════════════════════════════════════════ */
+function computeScores() {
+  const counts = {D:0,I:0,S:0,C:0};
+  answers.forEach(a => { if(a) counts[a]++; });
+  const total = QUESTIONS.length;
+  const pcts = {};
+  Object.keys(counts).forEach(k => pcts[k] = Math.round((counts[k]/total)*100));
+  const dominant = Object.keys(counts).reduce((a,b) => counts[a]>=counts[b]?a:b);
+  return {counts, pcts, dominant, total};
+}
+
+/* ═══════════════════════════════════════════════
+   ROUE SVG
+═══════════════════════════════════════════════ */
+function drawWheel(pcts, dominant) {
+  const svg = document.getElementById('wheel-svg');
+  const cx=150, cy=150, R=130, ri=48;
+  const types=['D','I','S','C'];
+  const starts={D:-90, I:0, S:90, C:180};
+
+  let html='<defs><filter id="gw"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+
+  types.forEach(t => {
+    const a1 = starts[t]*Math.PI/180;
+    const a2 = (starts[t]+90)*Math.PI/180;
+    const isDom = t===dominant;
+    const scale = isDom ? 1.08 : 1;
+    const push = isDom ? 7 : 0;
+    const ma = (a1+a2)/2;
+    const ocx = cx + Math.cos(ma)*push;
+    const ocy = cy + Math.sin(ma)*push;
+
+    const x1=ocx+R*scale*Math.cos(a1), y1=ocy+R*scale*Math.sin(a1);
+    const x2=ocx+R*scale*Math.cos(a2), y2=ocy+R*scale*Math.sin(a2);
+    const ix1=ocx+ri*Math.cos(a1), iy1=ocy+ri*Math.sin(a1);
+    const ix2=ocx+ri*Math.cos(a2), iy2=ocy+ri*Math.sin(a2);
+
+    const opacity = Math.max(0.45, pcts[t]/100);
+    const filter = isDom ? 'filter="url(#gw)"' : '';
+    html+=`<path d="M ${ix1} ${iy1} L ${x1} ${y1} A ${R*scale} ${R*scale} 0 0 1 ${x2} ${y2} L ${ix2} ${iy2} A ${ri} ${ri} 0 0 0 ${ix1} ${iy1} Z" fill="${COLORS_DISPLAY[t]}" opacity="${opacity}" ${filter}/>`;
+
+    const lR = (R*scale*0.65+ri*0.65);
+    const lx=ocx+lR*Math.cos(ma), ly=ocy+lR*Math.sin(ma);
+    html+=`<text x="${lx}" y="${ly-6}" text-anchor="middle" fill="white" font-family="Syne,sans-serif" font-size="${isDom?16:12}" font-weight="800" opacity="0.95">${pcts[t]}%</text>`;
+    html+=`<text x="${lx}" y="${ly+10}" text-anchor="middle" fill="white" font-family="Nunito,sans-serif" font-size="8.5" font-weight="700" opacity="0.8">${NAMES[t]}</text>`;
+  });
+
+  // Séparateurs
+  html+=`<line x1="${cx}" y1="${cy-R+10}" x2="${cx}" y2="${cy+R-10}" stroke="white" stroke-width="2.5" opacity="0.5"/>`;
+  html+=`<line x1="${cx-R+10}" y1="${cy}" x2="${cx+R-10}" y2="${cy}" stroke="white" stroke-width="2.5" opacity="0.5"/>`;
+
+  // Centre
+  html+=`<circle cx="${cx}" cy="${cy}" r="${ri}" fill="white" filter="url(#gw)"/>`;
+  html+=`<circle cx="${cx}" cy="${cy}" r="${ri-2}" fill="white"/>`;
+  const dp=PROFILES[dominant];
+  html+=`<text x="${cx}" y="${cy-6}" text-anchor="middle" fill="${COLORS_DISPLAY[dominant]}" font-family="Syne,sans-serif" font-size="12" font-weight="800">${EMOJIS[dominant]}</text>`;
+  html+=`<text x="${cx}" y="${cy+9}" text-anchor="middle" fill="${COLORS_DISPLAY[dominant]}" font-family="Syne,sans-serif" font-size="8.5" font-weight="800">DOMINANT</text>`;
+
+  svg.innerHTML=html;
+}
+
+/* ═══════════════════════════════════════════════
+   RÉSULTAT
+═══════════════════════════════════════════════ */
+function showResult() {
+  document.getElementById('screen-question').style.display='none';
+  const res = document.getElementById('screen-result');
+  res.style.display='block';
+
+  const sc = computeScores();
+  const dom = sc.dominant;
+  const prof = PROFILES[dom];
+  const col = COLORS_DISPLAY[dom];
+
+  // Fond coloré
+  res.className = prof.lightBg;
+
+  // Hero
+  document.getElementById('r-emoji').textContent = prof.emoji;
+  document.getElementById('r-title').textContent = prof.name;
+  document.getElementById('r-title').style.color = col;
+  const tag = document.getElementById('r-tag');
+  tag.textContent = prof.tag;
+  tag.style.background = col;
+
+  // Roue
+  setTimeout(()=>drawWheel(sc.pcts, dom), 100);
+
+  // Légende
+  const leg = document.getElementById('legend-list');
+  leg.innerHTML='';
+  ['D','I','S','C'].forEach(t=>{
+    const li=document.createElement('li');
+    li.className='legend-item'+(t===dom?' is-dominant':'');
+    li.style.color=COLORS_DISPLAY[t];
+    li.innerHTML=`<span class="legend-dot" style="background:${COLORS_DISPLAY[t]}"></span>
+      <span class="legend-name" style="color:${t===dom?COLORS_DISPLAY[t]:'#444'}">${EMOJIS[t]} ${NAMES[t]}</span>
+      <span class="legend-pct" style="color:${COLORS_DISPLAY[t]}">${sc.pcts[t]}%</span>`;
+    leg.appendChild(li);
+  });
+
+  // Barres
+  const br = document.getElementById('bars-rows');
+  br.innerHTML='';
+  ['D','I','S','C'].forEach(t=>{
+    const div=document.createElement('div');
+    div.className='bar-row';
+    div.innerHTML=`
+      <span class="bar-row-label" style="color:${COLORS_DISPLAY[t]}">${EMOJIS[t]} ${NAMES[t]}</span>
+      <div class="bar-row-track"><div class="bar-row-fill" style="width:0%;background:${COLORS_DISPLAY[t]}" data-w="${sc.pcts[t]}"></div></div>
+      <span class="bar-row-pct" style="color:${COLORS_DISPLAY[t]}">${sc.pcts[t]}%</span>`;
+    br.appendChild(div);
+  });
+  setTimeout(()=>{
+    document.querySelectorAll('.bar-row-fill').forEach(b=>{ b.style.width=b.dataset.w+'%'; });
+  }, 350);
+
+  // Description
+  document.getElementById('r-heading').innerHTML=`${prof.emoji} ${prof.name} — Votre profil en détail`;
+  document.getElementById('r-heading').style.color=col;
+  document.getElementById('r-desc').innerHTML=prof.description.map(p=>`<p>${p}</p>`).join('');
+  document.getElementById('r-traits').innerHTML=prof.traits.map(t=>
+    `<span class="trait" style="background:${col}18;color:${col};border:1.5px solid ${col}40">${t}</span>`
+  ).join('');
+
+  // Forces / axes
+  document.getElementById('grid-2').innerHTML=`
+    <div class="card-list">
+      <h4 style="color:${col}">✦ Vos points forts</h4>
+      <ul>${prof.strengths.map(s=>`<li>${s}</li>`).join('')}</ul>
+    </div>
+    <div class="card-list">
+      <h4 style="color:${col}">◈ Axes de développement</h4>
+      <ul>${prof.axes.map(a=>`<li>${a}</li>`).join('')}</ul>
+    </div>`;
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function restart() {
+  current=0;
+  answers=new Array(QUESTIONS.length).fill(null);
+  document.getElementById('screen-result').style.display='none';
+  document.getElementById('screen-intro').style.display='flex';
+}
+</script>
+</body>
+</html>
