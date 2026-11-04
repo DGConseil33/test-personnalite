@@ -1,0 +1,1 @@
+window.IBZ_CONFIG={"frames": 48, "topBox": {"x0": 219, "x1": 460, "y0": 49, "y1": 632, "w": 680, "h": 750}, "doorViews": {"fl": 34, "rl": 34, "fr": 22, "rr": 22, "hood": 0, "trunk": 24}, "hiView": false, "cockpit": false, "comboAnim": false, "homeView": 8, "doorSteps": 6, "car": {"name": "Ma voiture", "model": "Ma voiture", "fuel": "diesel"}, "carPack": false, "topView": false};
